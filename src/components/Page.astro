@@ -1,0 +1,25 @@
+---
+import BaseHead from './BaseHead.astro';
+import Header from './Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+type Props = {
+	noPadding?: true;
+}
+
+const { noPadding = false } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="font-poppins overflow-y-scroll flex flex-col">
+		<Header />
+		<main class:list={[noPadding ? "justify-center" : "mt-24", "h-screen flex flex-col items-center"]}>
+			<slot />
+		</main>
+	</body>
+</html>
